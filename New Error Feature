@@ -1,9 +1,0 @@
-script {
-               
-                    if (beforeCheckout != afterCheckout) {
-                        echo 'New commits found. Proceeding with the pipeline.'
-                    } else {
-                        echo 'No new commits. Aborting the pipeline.'
-                        error('No new commits. Aborting the pipeline.') 
-                    }
-                }
