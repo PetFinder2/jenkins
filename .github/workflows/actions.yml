@@ -1,0 +1,24 @@
+name: Check New Commit
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  check-commit:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+    - name: Check for new commit
+      run: |
+        git fetch
+        if [ "$(git rev-list --count HEAD..origin/main)" -gt 0 ]; then
+          echo "New commit detected!"
+        else
+          echo "No new commits."
+          exit 1
+        fi
